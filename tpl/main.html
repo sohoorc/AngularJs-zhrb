@@ -1,0 +1,51 @@
+<div ng-include="'tpl/include/header.html'"></div>
+<div ng-include="'tpl/include/footer.html'"></div>
+
+<ion-side-menus>
+  <!-- 中间内容 -->
+  <ion-side-menu-content>
+    <ion-content class="has-header has-footer">
+      <!--轮播-->
+
+
+      <!-- 列表-->
+      <div class="list list-inset">
+        <p id="new_time">今日热闻&nbsp;&nbsp;&nbsp;{{viewTime}}</p>
+        <a ui-sref="detail({id:dish.id})"
+           ng-repeat="dish in dishList"
+           class="item item-text-wrap item-thumbnail-right">
+          <img src="{{dish.images[0] | parseImg}}" alt="" />
+          <h2>{{dish.title}}</h2>
+        </a>
+        <ion-infinite-scroll
+                ng-if="hasMore"
+                immediate-check="false"
+                on-infinite="loadMore()">
+        </ion-infinite-scroll>
+        <p ng-hide="hasMore">没有更多数据可以加载了</p>
+      </div>
+      <!-- 按钮-->
+    </ion-content>
+  </ion-side-menu-content>
+
+  <!-- 左侧菜单 -->
+  <ion-side-menu side="left" >
+    <ion-content class="has-header">
+      <!--列表-->
+      <div class="list list-inset">
+        <a  class="item item-text-wrap ">
+          <h2 icon="ion-home" ui-sref="main">相关主题</h2>
+        </a>
+        <a ui-sref="themes({id:theme.id})"
+           ng-repeat="theme in orderList"
+           class="item item-text-wrap">
+          <h2>{{theme.name}} <span id="list-right" class="icon icon-right ion-android-add"></span></h2>
+
+        </a>
+      </div>
+    </ion-content>
+
+  </ion-side-menu>
+
+  <!-- 右侧菜单 -->
+</ion-side-menus>

@@ -1,0 +1,42 @@
+<ion-header-bar><h1 class="title">主题日报</h1></ion-header-bar>
+<ion-content class=" has-footer">
+  <!-- 模拟tbody-->
+  <div class="list list-inset">
+
+    <a ui-sref="themes({id:theme.id})"
+       ng-repeat="theme in orderList"
+       class="item item-text-wrap item-thumbnail-right">
+      <img src="{{theme.thumbnail | parseImg}}" alt="" />
+      <h2>{{theme.name}}</h2>
+      <p ng-bind=theme.description></p>
+    </a>
+    <!--<button
+      ng-show="hasMore"
+      ng-click="loadMore()"
+      class="button button-block button-balanced">
+      加载更多
+    </button>-->
+    <ion-infinite-scroll
+            ng-if="hasMore"
+            immediate-check="false"
+            on-infinite="loadMore()">
+
+    </ion-infinite-scroll>
+    <p ng-hide="hasMore">没有更多数据可以加载了</p>
+  </div>
+
+</ion-content>
+
+<div ng-include="'tpl/include/footer.html'"></div>
+
+
+
+
+
+
+
+
+
+
+
+

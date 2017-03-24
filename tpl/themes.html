@@ -1,0 +1,48 @@
+
+
+<ion-content class=" has-footer">
+
+  <!-- 标题-->
+  <div class="item item-text-wrap ">
+    <h1 class="title" ng-bind=themeTitle.name></h1 >
+    <p class="text-left" ng-bind=themeTitle.description></p>
+    <img src="{{themeTitle.image | parseImg}}" alt="">
+  </div>
+  <!-- 内容-->
+  <div class="list list-inset">
+
+    <a ui-sref="detail({id:theme.id})"
+       ng-repeat="theme in themeList"
+       class="item item-text-wrap ">
+      <h1>{{theme.title}}</h1>
+    </a>
+    <!--<button
+      ng-show="hasMore"
+      ng-click="loadMore()"
+      class="button button-block button-balanced">
+      加载更多
+    </button>-->
+    <ion-infinite-scroll
+            ng-if="hasMore"
+            immediate-check="false"
+            on-infinite="loadMore()">
+
+    </ion-infinite-scroll>
+    <p ng-hide="hasMore">没有更多数据可以加载了</p>
+  </div>
+
+</ion-content>
+
+<div ng-include="'tpl/include/footer.html'"></div>
+
+
+
+
+
+
+
+
+
+
+
+

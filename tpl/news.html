@@ -1,0 +1,25 @@
+<ion-content class="has-header has-footer">
+
+    <div class="card">
+        <div class="item item-divider">
+            <a href="#/kflStart">首页</a>
+            /详情
+        </div>
+        <div class="item item-text-wrap">
+            <h2>{{obj.title}}</h2>
+            {{obj.body}}
+
+        </div>
+        <div class="item item-divider text-right">
+            <button ui-sref="order({id:dish.did})"
+                    class="button button-small button-balanced">
+                收藏
+            </button>
+            <button ui-sref="main"
+                    class="button button-small button-positive">
+                返回
+            </button>
+        </div>
+    </div>
+
+</ion-content>
